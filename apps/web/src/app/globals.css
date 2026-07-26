@@ -111,6 +111,9 @@
     width: 6px;
     height: 6px;
   }
+  .scrollbar-thumb::-webkit-scrollbar-button {
+    display: none;
+  }
   .scrollbar-thumb::-webkit-scrollbar-track {
     background: transparent;
   }

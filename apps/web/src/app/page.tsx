@@ -61,7 +61,7 @@ const sections: {
 function SectionRow({ releases, isLoading }: { releases?: EnrichedRelease[]; isLoading: boolean }) {
   if (isLoading) {
     return (
-      <div className="scrollbar-thumb flex gap-1 overflow-x-auto pb-2">
+      <div className="scrollbar-thumb flex gap-[2px] overflow-x-auto pb-0.5">
         {Array.from({ length: 8 }).map((_, i) => (
           <div key={i} className="h-[299px] w-[190px] shrink-0 animate-pulse rounded-[12px] bg-[#1e1b19]" />
         ))}
@@ -74,7 +74,7 @@ function SectionRow({ releases, isLoading }: { releases?: EnrichedRelease[]; isL
   }
 
   return (
-    <div className="scrollbar-thumb flex gap-1 overflow-x-auto pb-2">
+    <div className="scrollbar-thumb flex gap-[2px] overflow-x-auto pb-0.5">
       {releases.map(r => (
         <AnimeCard key={r.id} release={r} />
       ))}
