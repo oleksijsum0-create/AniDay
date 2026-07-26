@@ -22,7 +22,7 @@ export function AnimeCard({ release, rank }: { release: EnrichedRelease; rank?: 
   return (
     <Link
       href={`/anime/${release.alias}`}
-      className="group relative block w-[190px]"
+      className="group relative block w-[190px] shrink-0"
     >
       <div className="relative h-[299px]">
         <div className="absolute left-3 top-[15px] z-10 h-[238px] w-[168px] overflow-hidden rounded-[12px]">
