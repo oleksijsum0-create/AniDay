@@ -30,7 +30,7 @@ export async function anilistQuery<T>(
     throw new Error('AniList rate limited')
   }
 
-  const data = await response.json()
+  const data: { errors?: unknown } = await response.json()
   if (data.errors) throw new Error(JSON.stringify(data.errors))
 
   await env.CACHE.put(cacheKey, JSON.stringify(data), {

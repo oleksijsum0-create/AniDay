@@ -66,7 +66,7 @@ async function getReleaseDetail(
   const anilistId = await getAnilistId(release.data.id, env)
   if (anilistId) {
     try {
-      const anilistData = await fetch(`https://graphql.anilist.co`, {
+      const res = await fetch(`https://graphql.anilist.co`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -79,8 +79,8 @@ async function getReleaseDetail(
           }`,
           variables: { id: anilistId },
         }),
-      }).then(r => r.json())
-
+      })
+      const anilistData: { data?: { Media: AnilistMedia | null } } = await res.json()
       enriched.anilist = anilistData.data?.Media ?? null
     } catch {
       enriched.anilist = null

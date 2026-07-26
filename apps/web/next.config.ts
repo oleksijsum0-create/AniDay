@@ -1,8 +1,9 @@
 import type { NextConfig } from "next";
+import { resolve } from "path";
 
 const nextConfig: NextConfig = {
   turbopack: {
-    root: process.cwd(),
+    root: resolve(import.meta.dirname!, "../../"),
   },
   images: {
     remotePatterns: [
