@@ -47,7 +47,7 @@ export function AnimeCard({ release, rank }: { release: EnrichedRelease; rank?: 
         </h3>
 
         <div className="absolute bottom-3 left-3 flex items-center gap-2">
-          <div className="flex h-[14px] items-center gap-[2px] rounded-lg bg-[#d9d9d9] px-[7px]">
+          <div className="flex h-[14px] items-center gap-[2px] rounded-[12px] bg-[#d9d9d9] px-[7px]">
             <span
               className="font-[family-name:var(--font-itim)] text-[13px] font-normal leading-none tracking-[-0.65px] text-[#161513]"
             >
