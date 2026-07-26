@@ -25,7 +25,7 @@ export function AnimeCard({ release, rank }: { release: EnrichedRelease; rank?: 
       className="group relative block w-[190px]"
     >
       <div className="relative h-[299px]">
-        <div className="absolute left-3 top-[15px] z-10 h-[238px] w-[168px] overflow-hidden rounded-sm">
+        <div className="absolute left-3 top-[15px] z-10 h-[238px] w-[168px] overflow-hidden rounded-lg">
           {cover ? (
             <img
               src={cover}
