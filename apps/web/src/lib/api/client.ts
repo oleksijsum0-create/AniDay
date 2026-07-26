@@ -41,3 +41,9 @@ export async function getReleaseByAlias(alias: string) {
 export async function getLatestReleases(): Promise<import('@/types/release').EnrichedRelease[]> {
   return request<import('@/types/release').EnrichedRelease[]>('/releases/latest')
 }
+
+export async function getSection(
+  name: 'trending' | 'ongoing' | 'top-rated' | 'upcoming',
+): Promise<import('@/types/release').EnrichedRelease[]> {
+  return request<import('@/types/release').EnrichedRelease[]>(`/sections/${name}`)
+}
