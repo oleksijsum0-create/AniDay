@@ -77,3 +77,24 @@ export interface Episode {
 export interface AnimeDetail extends Release {
   episodes?: Episode[]
 }
+
+export interface AnilistCover {
+  extraLarge: string
+  large: string
+  medium: string
+  color: string | null
+}
+
+export interface AnilistMeta {
+  id: number
+  title: { romaji: string; english: string; native: string }
+  coverImage: AnilistCover
+  averageScore: number | null
+  genres: string[]
+  episodes: number | null
+  status: string
+}
+
+export interface EnrichedRelease extends Release {
+  anilist?: AnilistMeta | null
+}

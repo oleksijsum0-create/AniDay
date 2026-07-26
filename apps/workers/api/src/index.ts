@@ -5,6 +5,7 @@ import type { Env } from './types'
 const router = Router()
 
 router.get('/api/v1/health', () => new Response('OK'))
+router.get('/api/v1/releases/latest', releasesHandler)
 router.get('/api/v1/releases', releasesHandler)
 router.get('/api/v1/releases/:alias', releasesHandler)
 

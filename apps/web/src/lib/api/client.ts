@@ -37,6 +37,6 @@ export async function getReleaseByAlias(alias: string) {
   return request<import('@/types/release').AnimeDetail>(`/releases/${alias}`)
 }
 
-export async function getLatestReleases() {
-  return request<import('@/types/release').ReleaseListResponse>('/releases/latest')
+export async function getLatestReleases(): Promise<import('@/types/release').EnrichedRelease[]> {
+  return request<import('@/types/release').EnrichedRelease[]>('/releases/latest')
 }
