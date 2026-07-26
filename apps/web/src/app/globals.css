@@ -103,11 +103,19 @@
 }
 
 @layer utilities {
-  .scrollbar-hidden {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  .scrollbar-thumb {
+    scrollbar-width: thin;
+    scrollbar-color: #2a2825 transparent;
   }
-  .scrollbar-hidden::-webkit-scrollbar {
-    display: none;
+  .scrollbar-thumb::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thumb::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thumb::-webkit-scrollbar-thumb {
+    background: #2a2825;
+    border-radius: 3px;
   }
 }
