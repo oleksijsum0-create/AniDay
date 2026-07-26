@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { Play, Bookmark } from 'lucide-react'
 import type { EnrichedRelease } from '@/types/release'
 
 function posterUrl(release: EnrichedRelease): string {
@@ -39,19 +38,10 @@ export function AnimeCard({ release, rank }: { release: EnrichedRelease; rank?: 
               {displayName(release)}
             </div>
           )}
-
-          <div className="absolute right-[7px] top-[7px] flex flex-col gap-[9px]">
-            <div className="flex h-[19px] w-[19px] items-center justify-center rounded-full bg-[#c7e5a9] opacity-0 transition-opacity group-hover:opacity-100">
-              <Play className="h-[11px] w-[11px] text-[#161513]" fill="#161513" />
-            </div>
-            <div className="flex h-[19px] w-[19px] items-center justify-center rounded-full bg-[#ec9b9b] opacity-0 transition-opacity group-hover:opacity-100">
-              <Bookmark className="h-[10px] w-[10px] text-[#161513]" />
-            </div>
-          </div>
         </div>
 
         <h3
-          className="absolute left-3 top-[253px] m-0 font-[family-name:var(--font-golos)] text-[13px] font-bold leading-[18px] tracking-[-0.65px] text-[#edebdc]"
+          className="absolute left-3 top-[253px] m-0 w-[168px] overflow-hidden text-ellipsis whitespace-nowrap font-[family-name:var(--font-golos)] text-[13px] font-bold leading-[18px] tracking-[-0.65px] text-[#edebdc]"
         >
           {displayName(release)}
         </h3>
