@@ -10,6 +10,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -28,3 +30,9 @@ jobs:
         run: npx wrangler pages deploy apps/web/out --project-name=aniday
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+      - name: Tag release
+        run: |
+          VERSION="web-$(date +'%Y%m%d')-${GITHUB_SHA:0:7}"
+          git tag -a "$VERSION" -m "Deploy web: ${GITHUB_SHA:0:7}"
+          git push origin "$VERSION"
