@@ -1,0 +1,16 @@
+name = "aniday-api"
+main = "src/index.ts"
+compatibility_date = "2024-07-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "aniday-db"
+database_id = "c59e96a4-3757-4801-89f0-a6a0a54699fe"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "1ccc2d2c824a4cb3b21e831c2bd1696f"
+
+[vars]
+ANILIBERTY_BASE_URL = "https://aniliberty.top/api/v1"
+ANILIST_GRAPHQL_URL = "https://graphql.anilist.co"

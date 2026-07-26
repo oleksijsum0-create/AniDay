@@ -1,0 +1,8 @@
+node_modules/
+.next/
+dist/
+out/
+*.local
+*.log
+.env*.local
+.wrangler/
