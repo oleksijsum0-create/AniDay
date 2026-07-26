@@ -3,64 +3,35 @@
 import { useLatestReleases } from '@/lib/api/releases'
 import { AnimeCard } from '@/components/anime/AnimeCard'
 
-function LoadingGrid() {
-  return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-      {Array.from({ length: 20 }).map((_, i) => (
-        <div key={i} className="rounded-lg border bg-card overflow-hidden animate-pulse">
-          <div className="aspect-[3/4] bg-muted" />
-          <div className="p-2 space-y-2">
-            <div className="h-4 bg-muted rounded w-3/4" />
-            <div className="h-3 bg-muted rounded w-1/2" />
-          </div>
-        </div>
-      ))}
-    </div>
-  )
-}
-
-function ErrorState({ error }: { error: Error }) {
-  return (
-    <div className="text-center py-20">
-      <p className="text-destructive font-medium">Failed to load releases</p>
-      <p className="text-sm text-muted-foreground mt-1">{error.message}</p>
-    </div>
-  )
-}
-
-function EmptyState() {
-  return (
-    <p className="col-span-full text-center py-20 text-muted-foreground">
-      No releases available yet
-    </p>
-  )
-}
-
 export default function Home() {
-  const { data: releases, isLoading, error } = useLatestReleases()
+  const { data: releases, isLoading } = useLatestReleases()
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-6">AniDay</h1>
-      <p className="text-lg text-muted-foreground mb-8">
-        Latest anime releases
-      </p>
+    <div className="min-h-screen bg-[#161513]">
+      <header className="px-6 py-8">
+        <h1 className="font-[family-name:var(--font-golos)] text-[28px] font-bold tracking-[-0.5px] text-[#eeecdd]">
+          AniDay
+        </h1>
+        <p className="mt-1 font-[family-name:var(--font-golos)] text-[13px] font-medium tracking-[-0.3px] text-[#a09e93]">
+          Latest releases
+        </p>
+      </header>
 
-      {isLoading ? (
-        <LoadingGrid />
-      ) : error ? (
-        <ErrorState error={error} />
-      ) : !releases || releases.length === 0 ? (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          <EmptyState />
-        </div>
-      ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {releases.map(r => (
-            <AnimeCard key={r.id} release={r} />
-          ))}
-        </div>
-      )}
+      <main className="px-6 pb-12">
+        {isLoading ? (
+          <div className="grid grid-cols-[repeat(auto-fill,190px)] gap-x-5 gap-y-6">
+            {Array.from({ length: 20 }).map((_, i) => (
+              <div key={i} className="h-[299px] w-[190px] animate-pulse rounded-sm bg-[#1e1b19]" />
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-[repeat(auto-fill,190px)] gap-x-5 gap-y-6">
+            {releases?.map((r, i) => (
+              <AnimeCard key={r.id} release={r} rank={i + 1} />
+            ))}
+          </div>
+        )}
+      </main>
     </div>
   )
 }

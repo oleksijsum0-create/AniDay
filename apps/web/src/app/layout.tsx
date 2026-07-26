@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Golos_Text, Itim, Geist } from "next/font/google";
 import "./globals.css";
 import { QueryProvider } from "@/components/providers/QueryProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const golos = Golos_Text({
+  variable: "--font-golos",
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const itim = Itim({
+  variable: "--font-itim",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
@@ -22,9 +29,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="uk"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${golos.variable} ${itim.variable} ${geistSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-[#161513] text-[#eeecdd]">
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>

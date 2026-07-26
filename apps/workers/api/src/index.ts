@@ -1,5 +1,6 @@
 import { Router } from 'itty-router'
 import { releasesHandler } from './routes/releases'
+import { handlePreflight, addCorsHeaders } from './middleware/cors'
 import type { Env } from './types'
 
 const router = Router()
@@ -12,5 +13,11 @@ router.get('/api/v1/releases/:alias', releasesHandler)
 router.all('*', () => new Response('Not Found', { status: 404 }))
 
 export default {
-  fetch: router.handle,
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    const preflight = handlePreflight(request)
+    if (preflight) return preflight
+
+    const response = await router.fetch(request, env, ctx)
+    return addCorsHeaders(response)
+  },
 } satisfies ExportedHandler<Env>
